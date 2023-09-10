@@ -1,9 +1,16 @@
 import { useState, memo } from "react";
+import { useSelector } from "react-redux";
+import { setUserName } from "../../redux/battle.actions";
+import { useDispatch } from "react-redux";
 
 
 const BattlePlayerInput = memo(({id, label, handlePlayerSubmit}) => {
 
-    const [userName, setUserName] = useState('')
+    // const [userName, setUserName] = useState('')
+    const dispatch = useDispatch()
+
+    const userName = useSelector(state => state.battle.userName)
+    console.log('userName', userName)
 
     const handleBattlePlayerSubmit = (event) => {
         event.preventDefault()
@@ -17,11 +24,11 @@ const BattlePlayerInput = memo(({id, label, handlePlayerSubmit}) => {
                 id={id}
                 type='text'
                 placeholder="Github user name"
-                value={userName}
-                onChange={(event) => setUserName(event.target.value)}
+                onChange={(event) => dispatch(setUserName(id, event.target.value))}
                 >
             </input>
             <button className="button" disabled={!userName.length}>Submit</button>
+
         </form>
     )
 })
