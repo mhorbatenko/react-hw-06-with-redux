@@ -1,4 +1,4 @@
-import { useState, memo } from "react";
+import { memo } from "react";
 import { useSelector } from "react-redux";
 import { setUserName } from "../../redux/battle.actions";
 import { useDispatch } from "react-redux";
@@ -6,11 +6,9 @@ import { useDispatch } from "react-redux";
 
 const BattlePlayerInput = memo(({id, label, handlePlayerSubmit}) => {
 
-    // const [userName, setUserName] = useState('')
     const dispatch = useDispatch()
 
     const userName = useSelector(state => state.battle.userName)
-    console.log('userName', userName)
 
     const handleBattlePlayerSubmit = (event) => {
         event.preventDefault()

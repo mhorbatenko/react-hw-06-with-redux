@@ -1,7 +1,6 @@
 import { memo } from "react";
 
 const BattlePlayerPreview = memo(({avatar, userName, children}) => {
-    console.log('render')
     return (
         <div>
             <div className="column">
